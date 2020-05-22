@@ -178,9 +178,14 @@ class stack_notes_input extends stack_input {
         }
 
         $contents = $state->contents;
+        $options      = new stack_options();
+        $ct           = new stack_cas_text($contents[0], $session, 0);
+        $displaytext  = $ct->get_display_castext();
+        $errs         = $ct->get_errors();
+
         $render = '';
         if (array_key_exists(0, $contents)) {
-            $render .= html_writer::tag('p', $contents[0]);
+            $render .= html_writer::tag('p', $displaytext);
         }
         $render .= html_writer::tag('p', stack_string('studentValidation_notes'), array('class' => 'stackinputnotice'));
         return format_text(stack_maths::process_display_castext($render));
