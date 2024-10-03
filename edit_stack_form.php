@@ -141,6 +141,11 @@ class qtype_stack_edit_form extends question_edit_form {
         parent::definition();
         $mform = $this->_form;
 
+        global $USER, $CFG;
+        require_once($CFG->dirroot.'/user/editlib.php');
+        // $USER->preference_htmleditor = 'textarea';
+        // useredit_update_user_preference($USER);
+
         $fixdollars = $mform->createElement('checkbox', 'fixdollars',
                 stack_string('fixdollars'), stack_string('fixdollarslabel'));
         $mform->insertElementBefore($fixdollars, 'buttonar');
@@ -204,6 +209,9 @@ class qtype_stack_edit_form extends question_edit_form {
         $sv = $mform->createElement('hidden', 'stackversion', get_config('qtype_stack', 'version'));
         $mform->insertElementBefore($sv, 'questiontext');
         $mform->setType('stackversion', PARAM_RAW);
+        // $ta = $mform->createElement('button', 'textarea','Text area');
+        // $mform->insertElementBefore($ta, 'questiontext');
+
 
         $qvars = $mform->createElement('textarea', 'questionvariables',
                 stack_string('questionvariables'), ['rows' => 5, 'cols' => 80]);
@@ -410,6 +418,10 @@ class qtype_stack_edit_form extends question_edit_form {
                 $mform->addHelpButton('stackBlock_geogebra_link'. $i , 'stackBlock_geogebra_link', 'qtype_stack');
             }
         }
+        global $PAGE;
+        $PAGE->requires->css('/question/type/stack/amd/src/codemirror/lib/codemirror.css');
+        $PAGE->requires->js_call_amd('qtype_stack/editor', 'init',[200]);
+
     }
 
     /**
