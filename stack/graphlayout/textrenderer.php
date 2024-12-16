@@ -63,7 +63,8 @@ class stack_prt_graph_text_renderer {
         foreach ($this->g->get_nodes() as $node) {
             $quiet = stack_string('quiet_icon_false');
             if ($node->quiet) {
-                $quiet = stack_string('quiet_icon_true');
+                $title = get_string('pluginname','qtype_stack');
+                $quiet = stack_string('quiet_icon_true',(object)['title' => $title]);
             }
             // Put the name and description in one cell. It looks better.
             $table[] = [

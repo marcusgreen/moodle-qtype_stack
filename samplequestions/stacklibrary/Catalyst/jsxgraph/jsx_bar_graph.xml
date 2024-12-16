@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 126  -->
+  <question type="stack">
+    <name>
+      <text>JSXGraph percentages Bar Chart</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[This question allows data input by interacting with JSXGraph and also uses "follow on marking" where one part depends on the values from the other, but if an earlier figure was incorrect it will still give a mark for being "internally consistant".
+
+You have been asked to record the following sales figure on a graph
+In January 12 items were sold
+In Februrary there was a 100% increase on the sales for January
+In March the sales were up 50% on February. Drag the bars to graph this data
+
+[[jsxgraph 
+input-ref-ansJan='barJanRef'
+input-ref-ansFeb='barFebRef'
+input-ref-ansMar='barMarRef'
+]]
+
+let inputLabel = [
+    'Jan',   
+    'Feb',   
+    'Mar',   
+];
+let inputValue = [
+    2,   // Jan
+    2,   // Feb
+    2,   // Mar,
+];
+
+// number of bars
+let max = inputValue.length;
+
+// bar width
+let width = 35 - max;
+
+// JSXGraph board
+const board = JXG.JSXGraph.initBoard(divid, {
+    showCopyright: false,
+    boundingbox: [-1, 50, 5, -10],
+    axis: true,
+    defaultAxes: {
+        x: {
+        ticks: {
+          visible: true,
+          label: {visible: false},
+        }
+      },
+        y: {
+        ticks: {
+          visible: true,
+          label: {visible: true},
+          majorTickSteps:10,
+
+        }
+      }
+    }
+});
+
+// bars with glider for adjustment
+
+let G = [];
+for (let i = 0; i < max; i++) {
+    let par = board.create('segment', [[i + 1, 0], [i + 1, 100]], {name: '', fixed: true, visible: false});
+    G[i] = board.create('glider', [i + 1, inputValue[i], par], {
+        name: '',
+        snapToGrid: true,
+        face: 'minus',
+        size: width / 2,
+        strokeWidth: 4,
+        strokeColor: '#00cc00',
+        showInfoBox: true
+    });
+    board.create('segment', [[i + 1, 0], G[i]], {
+        name: '',
+        fixed: true,
+        visible: true,
+        strokeWidth: width,
+        strokeColor: 'rgb(' + 255 * (max - i) / max + ', 0, ' + 255 * i / max + ')',
+        highLightstrokeColor: 'rgb(' + 255 * (max - i) / max + ', 0, ' + 255 * i / max + ')'
+    });
+    board.create('text', [i + 1, -2, inputLabel[i]], {name: 'x', fixed: true, anchorX: 'middle'});
+    G[i].on('up', function (e) {
+        document.getElementById('outputID').innerHTML = output();
+    });
+}
+
+let output = function () {
+    let out = [];
+    for (let i = 0; i < max; i++)
+        out.push(G[i].Y());
+    return out;
+}
+
+for (let i = 0; i < max; i++)
+    G[i].on('up', function (e) {
+        document.getElementById('outputID').innerHTML = output();
+    });    
+
+stack_jxg.bind_point(barJanRef, G[0]);
+stack_jxg.bind_point(barFebRef, G[1]);
+stack_jxg.bind_point(barMarRef, G[2]);
+
+[[/jsxgraph]]
+
+<div style="display:_none"> [[input:ansJan]][[validation:ansJan]]</div>
+<div style="display:_none"> [[input:ansFeb]] [[validation:ansFeb]]</div>
+<div style="display:_none"> [[input:ansMar]] [[validation:ansMar]]</div>
+What were the average monthly sales for the whole period ?
+[[input:ansAverage]] [[validation:ansAverage]]]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2024111900</text>
+    </stackversion>
+    <questionvariables>
+      <text>ta1:[1,12];
+ta2:[2,24];
+ta3:[3,36];
+ta_average_correct = 24;
+ta4_correct:(ta1[2]+ta2[2]+ta3[2])/3;</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text>[[feedback:prtJan]]
+[[feedback:prtFeb]]
+[[feedback:prtMar]]
+[[feedback:prtAverage]]</text>
+    </specificfeedback>
+    <questionnote format="html">
+      <text></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ansAverage</name>
+      <type>algebraic</type>
+      <tans>24</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options></options>
+    </input>
+    <input>
+      <name>ansFeb</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <input>
+      <name>ansJan</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <input>
+      <name>ansMar</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>prtAverage</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>ta4_derived:(ansJan[2]+ansFeb[2]+ansMar[2])/3;</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ansAverage</sans>
+        <tans>ta4_correct</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtAverage-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prtAverage-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ansAverage</sans>
+        <tans>ta4_derived</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtAverage-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Although the value you entered for one or more of the months was not correct, you have correctly calculated the average for the values you entered.</text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtAverage-2-F</falseanswernote>
+        <falsefeedback format="moodle_auto_format">
+          <text></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prtFeb</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ansFeb</sans>
+        <tans>ta2</tans>
+        <testoptions></testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtFeb-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text>The correct amount is {#ta2[2]#}. 100% means the whole amount added on again.</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtFeb-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>The correct amount  for February is {#ta2[2]#}. 100% means the whole amount added on again.</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prtJan</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ansJan</sans>
+        <tans>ta1</tans>
+        <testoptions></testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtJan-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct for January</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtJan-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>The correct amount for January is {#ta1[2]#}</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prtMar</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ansFeb</sans>
+        <tans>ta2</tans>
+        <testoptions></testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prtMar-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct for March</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prtMar-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>The correct value for March  is  {#ta3[2]#}, a fifty percent increase means add on half the value</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <qtest>
+      <testcase>1</testcase>
+      <description>The values of the bars were incoorect, but the average calculated was right so one mark</description>
+      <testinput>
+        <name>ansAverage</name>
+        <value>10</value>
+      </testinput>
+      <testinput>
+        <name>ansFeb</name>
+        <value>[2,10]</value>
+      </testinput>
+      <testinput>
+        <name>ansJan</name>
+        <value>[1,10]</value>
+      </testinput>
+      <testinput>
+        <name>ansMar</name>
+        <value>[3,10]</value>
+      </testinput>
+      <expected>
+        <name>prtAverage</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prtAverage-2-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prtFeb</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>prtFeb-1-F</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prtJan</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>prtJan-1-F</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prtMar</name>
+        <expectedscore>0.0000000</expectedscore>
+        <expectedpenalty>0.1000000</expectedpenalty>
+        <expectedanswernote>prtMar-1-F</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <description>Everything is correct</description>
+      <testinput>
+        <name>ansAverage</name>
+        <value>24</value>
+      </testinput>
+      <testinput>
+        <name>ansFeb</name>
+        <value>[2,24]</value>
+      </testinput>
+      <testinput>
+        <name>ansJan</name>
+        <value>[1,12]</value>
+      </testinput>
+      <testinput>
+        <name>ansMar</name>
+        <value>[3,36]</value>
+      </testinput>
+      <expected>
+        <name>prtAverage</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prtAverage-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prtFeb</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prtFeb-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prtJan</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prtJan-1-T</expectedanswernote>
+      </expected>
+      <expected>
+        <name>prtMar</name>
+        <expectedscore>1.0000000</expectedscore>
+        <expectedpenalty>0.0000000</expectedpenalty>
+        <expectedanswernote>prtMar-1-T</expectedanswernote>
+      </expected>
+    </qtest>
+  </question>
+
+</quiz>

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 82  -->
+  <question type="stack">
+    <name>
+      <text>9(b) Draw a paralellogram</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p><font size="5">  
+One side of a parallelogram is drawn on this centimetre grid.
+The parallelogram does not have any right angles.
+Complete the parallelogram by dragging the dots so that it has an area 24 cm<sup>2</sup> </p>
+[[jsxgraph 
+input-ref-pointA='pointARef'
+input-ref-pointB='pointBRef'
+input-ref-pointC='pointCRef'
+input-ref-pointD='pointDRef'
+]]
+
+var board = JXG.JSXGraph.initBoard(divid, { 
+boundingbox: [-1, 10, 11, -1], 
+grid:true,
+axis:true, showCopyright:false, defaultAxes: { x: { withLabel: false, ticks: {visible: false} }, y: { withLabel: false, ticks: {visible: false} } } }
+);
+var topline = board.create('line',[[2,9],[8,9]], {straightFirst:false, straightLast:false, strokeWidth:2, fixed:true}); 
+
+var attr = {
+            snapToGrid: true
+        },
+p = [];
+
+p.push(board.create('point',[1,8], {name:'A',size:4,snapToGrid:true, fixed:true }));
+p.push(board.create('point',[1,7], {name:'B',size:4, snapToGrid:true}));
+p.push(board.create('point',[1,6], {name:'C',size:4,snapToGrid:true}));
+p.push(board.create('point',[2,6], {name:'D',size:4, snapToGrid:true}));
+var chain = board.create('polygonalchain', p, {borders: {strokeWidth: 3}});
+
+board.unsuspendUpdate();
+
+stack_jxg.bind_point(pointARef, p[0]);
+stack_jxg.bind_point(pointBRef, p[1]);
+
+stack_jxg.bind_point(pointCRef, p[2]);
+stack_jxg.bind_point(pointDRef, p[3]);
+
+
+[[/jsxgraph]]
+</p>
+<div style="display:none"> [[input:pointA]] [[validation:pointA]]</div>
+<div style="display:none"> [[input:pointB]] [[validation:pointB]]</div>
+<div style="display:none"> [[input:pointC]] [[validation:pointC]]</div>
+<div style="display:none"> [[input:pointD]] [[validation:pointD]]</div>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2024111900</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[ta:true;
+points_match(pointA,pointB) := block(
+ match:false,
+ if (pointA[1] = pointB[1])  and (pointA[2] = pointB[2]) then
+ match:true,
+return(match)
+);
+has_right_angles(pointA,pointB) := block(
+rangles:false,
+if(pointA[1] = 2) or (pointB[1] = 8) then
+rangles:true,
+return(rangles)
+);
+/* Define the function to calculate the area of a polygon */
+get_area(coordinates) := block(
+    [n : length(coordinates), area : 0],
+    if n < 3 then return(0), /* Not a polygon if less than 3 points */
+    for i : 1 thru n do (
+        /* Extract current and the next point */
+        x1 : coordinates[i][1],
+        y1 : coordinates[i][2],
+        x2 : coordinates[mod(i, n) + 1][1],
+        y2 : coordinates[mod(i, n) + 1][2],
+        /* Apply Shoelace formula */
+        area : area + x1*y2 - y1*x2
+    ),
+    return(float(abs(area) / 2))
+);]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text><![CDATA[<p>[[feedback:prt1]]</p>]]></text>
+    </specificfeedback>
+    <questionnote format="html">
+      <text><![CDATA[Because the model answer is not the only correct answer, this question may be best if the Right answer display is disabled in the quiz setting.
+<p>{@y@}</p>]]></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<p><i class="fa fa-check"></i> Correct answer, well done.</p>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<p><i class="fa fa-adjust"></i> Your answer is partially correct.</p>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<p><i class="fa fa-times"></i> Incorrect answer.</p>]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>pointA</name>
+      <type>algebraic</type>
+      <tans>[2,9]</tans>
+      <boxsize>4</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint>[2,9]</syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <input>
+      <name>pointB</name>
+      <type>algebraic</type>
+      <tans>[1,5]</tans>
+      <boxsize>4</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint>[2,8]</syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <input>
+      <name>pointC</name>
+      <type>algebraic</type>
+      <tans>[7,5]</tans>
+      <boxsize>4</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint>[2,7]</syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <input>
+      <name>pointD</name>
+      <type>algebraic</type>
+      <tans>[8,9]</tans>
+      <boxsize>4</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint>[2,6]</syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>1</mustverify>
+      <showvalidation>1</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text><![CDATA[feedback:"";
+closed_polygon:points_match(pointD,[8,9]);
+if not (closed_polygon) then 
+feedback:sconcat(feedback,"That is not a paralellogram the lines to not join. ");
+
+right_angles:has_right_angles(pointB,pointC); 
+
+if(right_angles) then 
+feedback:sconcat(feedback,"The question requests no right angles. ");
+/**coordinates:[[2,9],[2,8],[8,8],[8,9]];**/
+coordinates:[pointA,pointB,pointC,pointD];
+
+
+area:get_area(coordinates);
+if(area = 24.0) then 
+feedback: sconcat(feedback,"That shape has the requested area of 24cm<sup>2</sup>. ") 
+else 
+feedback: sconcat(feedback, "That shape does not have the requested area of 24cm<sup>2</sup>. ")
+iscorrect:false;
+if(area = 24.0 and not right_angles and closed_polygon) then 
+block (
+iscorrect:true
+)]]></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>iscorrect</sans>
+        <tans>true</tans>
+        <testoptions></testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text>{@feedback@}</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>{@feedback@}</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <deployedseed>1629310892</deployedseed>
+    <qtest>
+      <testcase>1</testcase>
+      <description></description>
+      <expected>
+        <name>prt1</name>
+        <expectedscore></expectedscore>
+        <expectedpenalty></expectedpenalty>
+        <expectedanswernote>0</expectedanswernote>
+      </expected>
+    </qtest>
+    <qtest>
+      <testcase>2</testcase>
+      <description></description>
+      <expected>
+        <name>prt1</name>
+        <expectedscore></expectedscore>
+        <expectedpenalty></expectedpenalty>
+        <expectedanswernote>0</expectedanswernote>
+      </expected>
+    </qtest>
+    <tags>
+      <tag><text>jsxgraph</text>
+</tag>
+      <tag><text>catalyst</text>
+</tag>
+      <tag><text>geometry</text>
+</tag>
+      <tag><text>qtype_stack</text>
+</tag>
+      <tag><text>paralellogram</text>
+</tag>
+      <tag><text>area</text>
+</tag>
+    </tags>
+  </question>
+
+</quiz>

@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 5584  -->
+  <question type="stack">
+    <name>
+      <text>JSXGraph percentages</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[You have been asked to record the following sales figure on a graph
+In January 10 items were sold
+In Februrary there was a 50% increase on the sales for January
+In April the sales were up 100% on February. Drag the points to graph this data
+[[jsxgraph 
+input-ref-ans1='ans1Ref'
+input-ref-ans2='ans2Ref'
+input-ref-ans3='ans3Ref'
+]]
+     var board = JXG.JSXGraph.initBoard(divid, {
+    showCopyright: false,
+    boundingbox: [-1, 50, 5, -10],
+    axis: true,
+    defaultAxes: {
+        x: {
+        ticks: {
+          visible: true,
+          label: {visible: false},
+        }
+      },
+        y: {
+        ticks: {
+          visible: true,
+          label: {visible: true},
+          majorTickSteps:10,
+
+        }
+      }
+    }
+});
+
+
+// Line chart
+
+board.suspendUpdate();
+
+var dataArr = [[0,0,0]];  // Example data array
+
+// Initialize an array to store the points
+var points = [];
+
+// Labels for the months from January to June
+var monthLabels = ['Jan', 'Feb', 'Mar'];
+
+dataArr[0].forEach((value, index) => {
+    // x position is index + 1 (since bars start at 1)
+    var x = index+1;
+    var y = value;
+
+    // Create a vertical line for constraining the point's x position
+    var verticalLine = board.create('line', [[x, 0], [x, 1]], {
+        visible: false  // This line is invisible
+    });
+
+    // Create a glider point constrained to the vertical line
+    var point = board.create('glider', [x, y, verticalLine], {
+        name: '',
+        fixed: false,
+        showInfobox: true,
+        snapToGrid: true,
+    });
+
+    // Store the created point in the array
+    points.push(point);
+});
+
+// Function to draw lines between the points
+function drawLines() {
+    for (let i = 0; i < points.length - 1; i++) {
+        board.create('segment', [points[i], points[i + 1]], {
+            straightFirst: false,
+            straightLast: false,
+            strokeWidth: 2,
+            snapToGrid: true,
+            strokeColor: 'blue'  // Customize the line color as needed
+        });
+    }
+}
+
+// Call the function to draw the lines
+drawLines();
+
+//Add labels for the months on the x-axis
+monthLabels.forEach((month, index) => {
+    var x = index + 1;
+    board.create('text', [x, -0.5, month], {
+        anchorX: 'middle',
+        anchorY: 'top',
+        fixed:true,
+    });
+});
+
+board.unsuspendUpdate();
+
+board.update();
+stack_jxg.bind_point(ans1Ref, points[0]);
+stack_jxg.bind_point(ans2Ref, points[1]);
+stack_jxg.bind_point(ans3Ref, points[2]);
+[[/jsxgraph]]
+
+<div style="display:none"> [[input:ans1]] [[validation:ans1]]</div>
+<div style="display:none"> [[input:ans2]] [[validation:ans2]]</div>
+<div style="display:none"> [[input:ans3]] [[validation:ans3]]</div>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2024072400</text>
+    </stackversion>
+    <questionvariables>
+      <text>ta1:[1,10];
+ta2:[2,15];
+ta3:[3,30];</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text>[[feedback:prt1]]
+[[feedback:prt2]]
+[[feedback:prt3]]</text>
+    </specificfeedback>
+    <questionnote format="html">
+      <text></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta1</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>hideanswer</options>
+    </input>
+    <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>ta2</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options></options>
+    </input>
+    <input>
+      <name>ans3</name>
+      <type>algebraic</type>
+      <tans>ta3</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta1</tans>
+        <testoptions>.10</testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt2</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans2</sans>
+        <tans>ta2</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt2-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt2-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt3</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans3</sans>
+        <tans>ta3</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt3-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt3-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+
+</quiz>
