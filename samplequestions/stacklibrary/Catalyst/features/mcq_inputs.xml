@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 270  -->
+  <question type="stack">
+    <name>
+      <text>Multiple Choice Inputs</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p>To quote from the STACK documentation </p>
+<p>"The whole point of STACK is not to use multiple-choice questions, but instead to have the student enter an algebraic expression! That said there are occasions where it is very useful, if not necessary, to use multiple-choice questions in their various forms."</p>
+<p>https://docs.stack-assessment.org/en/Authoring/Inputs/Multiple_choice_input</p>
+<p>This question illustrates some of the ways of using Multiple Choice input for questions</p>
+<p></p>
+Select the first and third letters of the alphabet
+<p>[[input:ans_letters]] [[validation:ans_letters]]</p>
+<p>[[feedback:prt_letters]]</p>
+
+Which of the following is a tree?
+<p>[[input:ans_tree]] [[validation:ans_tree]]</p>
+Select the correct answer from this list
+<p>[[input:ans_cats]] [[validation:ans_cats]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>4</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2024111900</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[ta_cats:[
+[A,true,"Cats have paws"],
+[B,false,"Cats have wings"],
+[C,false,"Cats have horns"]
+];
+ta_letters:[
+["A",true],
+["B",false],
+["C",true]
+];
+ta_tree:[
+["Bicycle",false],
+["Oak",true],
+["Football",false]
+];]]></text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text><![CDATA[<p>[[feedback:prt_cats]]</p>
+<p>[[feedback:prt_tree]]</p>]]></text>
+    </specificfeedback>
+    <questionnote format="html">
+      <text>ta_sel_text</text>
+    </questionnote>
+    <questiondescription format="html">
+      <text></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<p><i class="fa fa-check"></i> Correct answer, well done.</p>]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<p><i class="fa fa-adjust"></i> Your answer is partially correct.</p>]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<p><i class="fa fa-times"></i> Incorrect answer.</p>]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans_cats</name>
+      <type>dropdown</type>
+      <tans>ta_cats</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options></options>
+    </input>
+    <input>
+      <name>ans_letters</name>
+      <type>checkbox</type>
+      <tans>ta_letters</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options></options>
+    </input>
+    <input>
+      <name>ans_tree</name>
+      <type>radio</type>
+      <tans>ta_tree</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>prt_cats</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans_cats</sans>
+        <tans>A</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt_cats-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Cat correct</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt_cats-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>Cat Incorrect</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt_letters</name>
+      <value>2.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans_letters</sans>
+        <tans>mcq_correct(ta_letters)</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt_letters-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct letter choice</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt_letters-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>Incorrect letter choice</text>
+        </falsefeedback>
+      </node>
+    </prt>
+    <prt>
+      <name>prt_tree</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans_tree</sans>
+        <tans><![CDATA["Oak"]]></tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt_tree-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text>Correct tree</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt_tree-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>Incorrect tree</text>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+
+</quiz>
