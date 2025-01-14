@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 479  -->
+  <question type="stack">
+    <name>
+      <text>JSXGraph Binding With Hidden Input Field</text>
+    </name>
+    <questiontext format="moodle_auto_format">
+      <text><![CDATA[The STACK question type comes bundled with the JSXGraph javascript library. 
+This shows a basic JSXGraph with data binding. It is common to want the input field to be hidden, to see that
+change the _none to none on the last line.
+If you drag the point to [7,7] it will be marked as correct as Node2 of the Potential Response Tree uses the NumRelative test to see if 
+the value is within 20% of the correct response.
+
+Note the settings on the input field where the forbid float is set to no and the syntax hint field has an array to set the starting values.
+
+Drag point B to the intersection of X=8 and Y = 8
+[[jsxgraph input-ref-ans1='ans1Ref']]
+var board = JXG.JSXGraph.initBoard(divid, {
+    boundingbox: [-1, 10.5, 10.5, -1],
+    showCopyright: false,
+    axis: true,
+});
+
+// Create the fixed starting point at (0,0)
+var startPoint = board.create('point', [0, 0], { fixed: true, name: 'A' });
+
+// Create the second point at (1,10) which can still be moved
+var endPoint = board.create('point', [10, 1], { name: 'B',   snapToGrid:true });
+
+// Draw a segment from the fixed point to the movable point
+var line = board.create('segment', [
+    startPoint, endPoint
+], { strokeColor: 'blue', strokeWidth: 2 });
+
+stack_jxg.bind_point(ans1Ref, endPoint);
+board.update();
+[[/jsxgraph]]
+
+<div style="display:_none"> [[input:ans1]] [[validation:ans1]]</div>]]></text>
+    </questiontext>
+    <generalfeedback format="moodle_auto_format">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>3</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2024111900</text>
+    </stackversion>
+    <questionvariables>
+      <text>ta:[8,8];</text>
+    </questionvariables>
+    <specificfeedback format="html">
+      <text>[[feedback:prt1]]</text>
+    </specificfeedback>
+    <questionnote format="html">
+      <text></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:green;"><i class="fa fa-check"></i></span> Correct answer, well done.]]></text>
+    </prtcorrect>
+    <prtpartiallycorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:orange;"><i class="fa fa-adjust"></i></span> Your answer is partially correct.]]></text>
+    </prtpartiallycorrect>
+    <prtincorrect format="html">
+      <text><![CDATA[<span style="font-size: 1.5em; color:red;"><i class="fa fa-times"></i></span> Incorrect answer.]]></text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>ans1</name>
+      <type>algebraic</type>
+      <tans>ta</tans>
+      <boxsize>8</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint>[2,2]</syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options>hideanswer</options>
+    </input>
+    <prt>
+      <name>prt1</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text></text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>.10</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-1-T</trueanswernote>
+        <truefeedback format="html">
+          <text>That is correct</text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>1</falsenextnode>
+        <falseanswernote>prt1-1-F</falseanswernote>
+        <falsefeedback format="html">
+          <text></text>
+        </falsefeedback>
+      </node>
+      <node>
+        <name>1</name>
+        <description></description>
+        <answertest>NumRelative</answertest>
+        <sans>ans1</sans>
+        <tans>ta</tans>
+        <testoptions>.2</testoptions>
+        <quiet>1</quiet>
+        <truescoremode>+</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>prt1-2-T</trueanswernote>
+        <truefeedback format="html">
+          <text>You were within 10%, that is close enough</text>
+        </truefeedback>
+        <falsescoremode>-</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>prt1-2-F</falseanswernote>
+        <falsefeedback format="html">
+          <text>No</text>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+
+</quiz>
