@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <quiz>
-<!-- question: 12238  -->
+<!-- question: 603  -->
   <question type="stack">
     <name>
       <text>JsxGraph_Draw a paralellogram</text>
     </name>
     <questiontext format="html">
-      <text><![CDATA[<h3>This question illustrates how JSXGraph can be used to require a student to "Draw a shape", and the data input can be evaluated according to a criteria </h3>
+      <text><![CDATA[<p><b>This question illustrates how JSXGraph can be used to require a student to "Draw a shape", and the data input can be evaluated according to a criteria </b></p>
 <p><font size="5">  
 One side of a parallelogram is drawn on this centimetre grid.
 The parallelogram does not have any right angles.
-Complete the parallelogram by dragging the dots so that it has an area 24 cm<sup>2</sup> </p>
+Complete the parallelogram by dragging the dots so that it has an area 24 cm<sup>2</sup> </p></font>
 [[jsxgraph 
 input-ref-ans1='ans1Ref'
 input-ref-ans2='ans2Ref'
 input-ref-ans3='ans3Ref'
 input-ref-ans4='ans4Ref'
-input-ref-ans5='ans5Ref'
-input-ref-ans6='ans6Ref'
 ]]
 
 var board = JXG.JSXGraph.initBoard(divid, { 
@@ -46,18 +44,15 @@ stack_jxg.bind_point(ans2Ref, p[1]);
 stack_jxg.bind_point(ans3Ref, p[2]);
 stack_jxg.bind_point(ans4Ref, p[3]);
 
-
 [[/jsxgraph]]
 </p>
 <div style="display:none"> [[input:ans1]] [[validation:ans1]]</div>
 <div style="display:none"> [[input:ans2]] [[validation:ans2]]</div>
 <div style="display:none"> [[input:ans3]] [[validation:ans3]]</div>
-<div style="display:none"> [[input:ans4]] [[validation:ans4]]</div>
-<div style="display:none"> [[input:ans5]] [[validation:ans5]]</div>
-<div style="display:none"> [[input:ans6]] [[validation:ans6]]</div>]]></text>
+<div style="display:none"> [[input:ans4]] [[validation:ans4]]</div>]]></text>
     </questiontext>
     <generalfeedback format="html">
-      <text>[s:0, x, y],</text>
+      <text></text>
     </generalfeedback>
     <defaultgrade>1</defaultgrade>
     <penalty>0.1</penalty>
@@ -129,26 +124,8 @@ get_area(coordinates) := block(
     <input>
       <name>ans1</name>
       <type>algebraic</type>
-      <tans>ta</tans>
+      <tans>[2,9]</tans>
       <boxsize>4</boxsize>
-      <strictsyntax>1</strictsyntax>
-      <insertstars>0</insertstars>
-      <syntaxhint>[2,9]</syntaxhint>
-      <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
-      <forbidfloat>1</forbidfloat>
-      <requirelowestterms>0</requirelowestterms>
-      <checkanswertype>0</checkanswertype>
-      <mustverify>0</mustverify>
-      <showvalidation>0</showvalidation>
-      <options></options>
-    </input>
-    <input>
-      <name>ans2</name>
-      <type>algebraic</type>
-      <tans>1</tans>
-      <boxsize>15</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
       <syntaxhint>[2,8]</syntaxhint>
@@ -163,9 +140,27 @@ get_area(coordinates) := block(
       <options></options>
     </input>
     <input>
+      <name>ans2</name>
+      <type>algebraic</type>
+      <tans>[3,5]</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint>[2,9]</syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options></options>
+    </input>
+    <input>
       <name>ans3</name>
       <type>algebraic</type>
-      <tans>1</tans>
+      <tans>[9,5]</tans>
       <boxsize>15</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
@@ -183,7 +178,7 @@ get_area(coordinates) := block(
     <input>
       <name>ans4</name>
       <type>algebraic</type>
-      <tans>1</tans>
+      <tans>[8,9]</tans>
       <boxsize>15</boxsize>
       <strictsyntax>1</strictsyntax>
       <insertstars>0</insertstars>
@@ -198,47 +193,11 @@ get_area(coordinates) := block(
       <showvalidation>0</showvalidation>
       <options></options>
     </input>
-    <input>
-      <name>ans5</name>
-      <type>algebraic</type>
-      <tans>1</tans>
-      <boxsize>15</boxsize>
-      <strictsyntax>1</strictsyntax>
-      <insertstars>0</insertstars>
-      <syntaxhint>[2,5]</syntaxhint>
-      <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
-      <forbidfloat>1</forbidfloat>
-      <requirelowestterms>0</requirelowestterms>
-      <checkanswertype>0</checkanswertype>
-      <mustverify>0</mustverify>
-      <showvalidation>0</showvalidation>
-      <options></options>
-    </input>
-    <input>
-      <name>ans6</name>
-      <type>algebraic</type>
-      <tans>1</tans>
-      <boxsize>15</boxsize>
-      <strictsyntax>1</strictsyntax>
-      <insertstars>0</insertstars>
-      <syntaxhint>[8,3]</syntaxhint>
-      <syntaxattribute>0</syntaxattribute>
-      <forbidwords></forbidwords>
-      <allowwords></allowwords>
-      <forbidfloat>1</forbidfloat>
-      <requirelowestterms>0</requirelowestterms>
-      <checkanswertype>0</checkanswertype>
-      <mustverify>0</mustverify>
-      <showvalidation>0</showvalidation>
-      <options></options>
-    </input>
     <prt>
       <name>prt1</name>
       <value>1.0000000</value>
       <autosimplify>1</autosimplify>
-      <feedbackstyle>1</feedbackstyle>
+      <feedbackstyle>2</feedbackstyle>
       <feedbackvariables>
         <text><![CDATA[feedback:"";
 closed_polygon:points_match(ans4,[8,9]);
