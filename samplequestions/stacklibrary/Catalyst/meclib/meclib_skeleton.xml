@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 8546  -->
+  <question type="stack">
+    <name>
+      <text>Meclib Sketon question</text>
+    </name>
+    <questiontext format="html">
+      <text><![CDATA[<p> This is a  minimal STACK question using Meclib library..It is designed as a template with two example objects a fix and a spring.</p>
+<p>Meclib is a way of creating JSXGraph questions using only maxima in the question variables. 
+<p>You can see a list of all available MecLib objects here 
+<a href=https://github.com/mkraska/meclib/wiki/List-of-Objects target==_blank>https://github.com/mkraska/meclib/wiki/List-of-Objects</a></p>
+
+<p> To modify the output change the values in the initdata array in the quesitons variables fields. </p>
+
+<!-- Everything between th [[jsxgraph is boilerplate, all question content comes from the maxima in Question Variables -->
+[[jsxgraph width='500px' height='400px' ]]
+var mode  = "STACK";  // as opposed to "jsfiddle" which is used in the test environment
+var stateRef;         // is empty in the non-interactive case
+const initstring = {#init#}; // injection of the list of objects
+const centeredLabelStyle = {size:0, showInfobox:false, label:{offset:[-6,0],  anchorX:'left', anchorY:'middle'}};
+[[include src="https://raw.githubusercontent.com/mkraska/meclib/main/meclib.js" /]]
+[[/jsxgraph]]]]></text>
+    </questiontext>
+    <generalfeedback format="markdown">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>0</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2025040100</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[initdata: [
+	[ "grid", "X","Y", -1,10,-1,10, 30 ]
+    /*[ "fix1", "A", [2,2], 0, "show" ],
+    ["springt", "nameofspring", [3,3],[6,3],"show" ]*/
+   ]
+init: stackjson_stringify(initdata);
+
+/** Place at end of Question Variable content */
+stack_include("https://raw.githubusercontent.com/mkraska/meclib/main/Maxima/fb_value_EN.mac");]]></text>
+    </questionvariables>
+    <specificfeedback format="markdown">
+      <text></text>
+    </specificfeedback>
+    <questionnote format="html">
+      <text></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="markdown">
+      <text>Correct answer, well done.</text>
+    </prtcorrect>
+    <prtpartiallycorrect format="markdown">
+      <text>Your answer is partially correct.</text>
+    </prtpartiallycorrect>
+    <prtincorrect format="markdown">
+      <text>Incorrect answer.</text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+  </question>
+
+</quiz>
