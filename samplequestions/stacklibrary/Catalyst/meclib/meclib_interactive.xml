@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz>
+<!-- question: 8588  -->
+  <question type="stack">
+    <name>
+      <text>Meclib Interactive</text>
+    </name>
+    <questiontext format="markdown">
+      <text><![CDATA[This is a minimal STACK question using Meclib library. It is designed as a template for questions where students respond by manipulating the JSXGraph output. In this case the MecLib widget is a crosshair, the correct response is to drag it to the coordinates 2,2. Typically the inputs would be hidden by adding hidden to the p for paragraph tag.
+
+You can see a list of all available MecLib objects here <a href="https://github.com/mkraska/meclib/wiki/List-of-Objects" target="=_blank">https://github.com/mkraska/meclib/wiki/List-of-Objects</a>
+To modify the output change the values in the initdata array in the quesitons variables fields.
+
+[[jsxgraph width='500px' height='400px' input-ref-objects="stateRef" input-ref-names="fbd_names" ]]
+var mode = "STACK"; // as opposedto "jsfiddle" which is used in the test environment 
+var stateRef; // is empty in the non-interactive case 
+const initstring = {#init#}; // injection of the list of objects 
+const centeredLabelStyle = {size:0, showInfobox:false, label:{offset:[-6,0], anchorX:'left', anchorY:'middle'}}; 
+[[include src="https://raw.githubusercontent.com/mkraska/meclib/main/meclib.js" /]]
+
+[[/jsxgraph]]
+<p >[[input:objects]] [[validation:objects]]</p>
+<p >[[input:names]] [[validation:names]] </p>
+<p>Indicate the center of gravity using the blue crosshair.</p>
+<p>[[feedback:target]]</p>]]></text>
+    </questiontext>
+    <generalfeedback format="markdown">
+      <text></text>
+    </generalfeedback>
+    <defaultgrade>0</defaultgrade>
+    <penalty>0.1</penalty>
+    <hidden>0</hidden>
+    <idnumber></idnumber>
+    <stackversion>
+      <text>2025040100</text>
+    </stackversion>
+    <questionvariables>
+      <text><![CDATA[initdata: [
+	[ "grid", "X","Y", -1,5,-1,5, 30 ],
+    [ "crosshair", "", [1, 1], [0,0], [1,1], [2,2] ]
+   ]
+init: stackjson_stringify(initdata);
+ta:[2,2];
+
+/** Place at end of Question Variable content */
+stack_include("https://raw.githubusercontent.com/mkraska/meclib/main/Maxima/fb_value_EN.mac");]]></text>
+    </questionvariables>
+    <specificfeedback format="markdown">
+      <text></text>
+    </specificfeedback>
+    <questionnote format="html">
+      <text></text>
+    </questionnote>
+    <questiondescription format="html">
+      <text></text>
+    </questiondescription>
+    <questionsimplify>1</questionsimplify>
+    <assumepositive>0</assumepositive>
+    <assumereal>0</assumereal>
+    <prtcorrect format="markdown">
+      <text>Correct answer, well done.</text>
+    </prtcorrect>
+    <prtpartiallycorrect format="markdown">
+      <text>Your answer is partially correct.</text>
+    </prtpartiallycorrect>
+    <prtincorrect format="markdown">
+      <text>Incorrect answer.</text>
+    </prtincorrect>
+    <decimals>.</decimals>
+    <scientificnotation>*10</scientificnotation>
+    <multiplicationsign>dot</multiplicationsign>
+    <sqrtsign>1</sqrtsign>
+    <complexno>i</complexno>
+    <inversetrig>cos-1</inversetrig>
+    <logicsymbol>lang</logicsymbol>
+    <matrixparens>[</matrixparens>
+    <variantsselectionseed></variantsselectionseed>
+    <input>
+      <name>names</name>
+      <type>algebraic</type>
+      <tans>[]</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>0</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options></options>
+    </input>
+    <input>
+      <name>objects</name>
+      <type>string</type>
+      <tans>tans</tans>
+      <boxsize>15</boxsize>
+      <strictsyntax>1</strictsyntax>
+      <insertstars>0</insertstars>
+      <syntaxhint></syntaxhint>
+      <syntaxattribute>0</syntaxattribute>
+      <forbidwords></forbidwords>
+      <allowwords></allowwords>
+      <forbidfloat>1</forbidfloat>
+      <requirelowestterms>0</requirelowestterms>
+      <checkanswertype>0</checkanswertype>
+      <mustverify>0</mustverify>
+      <showvalidation>0</showvalidation>
+      <options></options>
+    </input>
+    <prt>
+      <name>target</name>
+      <value>1.0000000</value>
+      <autosimplify>1</autosimplify>
+      <feedbackstyle>1</feedbackstyle>
+      <feedbackvariables>
+        <text>sa:names[2]</text>
+      </feedbackvariables>
+      <node>
+        <name>0</name>
+        <description></description>
+        <answertest>AlgEquiv</answertest>
+        <sans>sa</sans>
+        <tans>ta</tans>
+        <testoptions></testoptions>
+        <quiet>0</quiet>
+        <truescoremode>=</truescoremode>
+        <truescore>1</truescore>
+        <truepenalty></truepenalty>
+        <truenextnode>-1</truenextnode>
+        <trueanswernote>target-1-T</trueanswernote>
+        <truefeedback format="markdown">
+          <text></text>
+        </truefeedback>
+        <falsescoremode>=</falsescoremode>
+        <falsescore>0</falsescore>
+        <falsepenalty></falsepenalty>
+        <falsenextnode>-1</falsenextnode>
+        <falseanswernote>target-1-F</falseanswernote>
+        <falsefeedback format="markdown">
+          <text></text>
+        </falsefeedback>
+      </node>
+    </prt>
+  </question>
+
+</quiz>
